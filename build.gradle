@@ -28,7 +28,7 @@ dependencies {
 apt {
 	arguments {
 	    androidManifestFile variant.processResources.manifestFile
-	    resourcePackageName "demo.p2p.hl"
+	    resourcePackageName "in.imust.pnd"
 	    //resourcePackageName android.defaultConfig.packageName
 	    
 	    //logLevel TRACE

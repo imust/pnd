@@ -134,7 +134,7 @@ public class MainActivity extends Activity {
 	void restore() {
 		File lastDir = new File(mBackupDir, mMaxIndex + "");
 		if (lastDir.exists()) {
-			// ×Ô¶¯±¸·İÒ»ÏÂ, ÒÔÃâ°´´í
+			// å…ˆå¤‡ä»½ä¸€ä¸‹é¿å…æŒ‰é”™
 			File temp = new File(mBackupDir, "temp");
 			if (!temp.exists()) {
 				temp.mkdir();
@@ -143,7 +143,7 @@ public class MainActivity extends Activity {
 					, mPackage, temp.getAbsolutePath());
 			ShellUtils.execCommand(command, true);
 			
-			// È»ºó²ÅÕæµÄ»Ö¸´
+			// ç„¶åå†çœŸçš„è¿˜åŸ
 			command = String.format("cp -f %1$s/*.bin /data/data/%2$s/files/"
 					, lastDir.getAbsolutePath(), mPackage);
 			ShellUtils.execCommand(command, true);
