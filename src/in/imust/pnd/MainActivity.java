@@ -4,7 +4,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import demo.p2p.hl.R;
+import in.imust.pnd.R;
 import demo.p2p.hl.base.CustomerAdapter;
 import demo.p2p.hl.data.TestData;
 import demo.p2p.hl.view.TestView;

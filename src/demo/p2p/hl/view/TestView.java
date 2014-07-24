@@ -6,7 +6,7 @@ import org.androidannotations.annotations.ViewById;
 
 import android.content.Context;
 import android.widget.TextView;
-import demo.p2p.hl.R;
+import in.imust.pnd.R;
 import demo.p2p.hl.data.TestData;
 
 @EViewGroup(R.layout.test_view)
