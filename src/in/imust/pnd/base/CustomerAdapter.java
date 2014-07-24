@@ -1,4 +1,4 @@
-package demo.p2p.hl.base;
+package in.imust.pnd.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -7,8 +7,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import demo.p2p.hl.data.AdapterData;
-import demo.p2p.hl.view.AdapterView;
 
 /**
  * 
@@ -56,14 +54,14 @@ public abstract class CustomerAdapter<T extends AdapterData, K extends AdapterVi
 			try {
 				adapterView = (K)((Class)((ParameterizedType)this.getClass()
 						.getGenericSuperclass()).getActualTypeArguments()[1])
-						.getConstructor(Context.class).newInstance(mContext);
-				adapterView.initView(mContext);
-				convertView = adapterView;
+						.getDeclaredMethod("build", Context.class).invoke(null, mContext);
+				convertView = adapterView.getView();
+				convertView.setTag(adapterView);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
-			adapterView = (K) convertView;
+			adapterView = (K) convertView.getTag();
 		}
 		
 		T data = getItem(position);

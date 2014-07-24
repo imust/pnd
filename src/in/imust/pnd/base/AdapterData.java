@@ -1,4 +1,4 @@
-package demo.p2p.hl.data;
+package in.imust.pnd.base;
 
 public interface AdapterData {
 

@@ -7,9 +7,27 @@
     android:padding="10dp"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <ListView style="@style/layout_m_m"
+    <ListView
         android:id="@+id/mList"
-        >
+        style="@style/layout_m_m"
+        android:layout_weight="1" >
     </ListView>
+
+    <LinearLayout
+        style="@style/layout_m_w"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/restore"
+            style="@style/layout_m_w"
+            android:layout_weight="1"
+            android:text="恢复" />
+
+        <Button
+            android:id="@+id/backup"
+            style="@style/layout_m_w"
+            android:layout_weight="1"
+            android:text="备份" />
+    </LinearLayout>
 
 </LinearLayout>

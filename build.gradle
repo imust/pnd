@@ -23,7 +23,6 @@ dependencies {
     //compile fileTree(dir: 'libs', include: '*.jar')
     apt "org.androidannotations:androidannotations:3.0.1"
   	compile "org.androidannotations:androidannotations-api:3.0.1"
-    compile "de.greenrobot:eventbus:2.2.1"
 }
 
 apt {
