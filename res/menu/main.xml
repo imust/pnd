@@ -4,8 +4,8 @@
     <item
         android:id="@+id/exchange"
         android:icon="@android:drawable/ic_menu_rotate"
-        android:showAsAction="always"
-        android:title="切换"/>
+        android:showAsAction="never"
+        android:title="切换日服港服"/>
     <item
         android:id="@+id/delete"
         android:icon="@android:drawable/ic_menu_delete"
