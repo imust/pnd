@@ -7,6 +7,13 @@
     android:padding="10dp"
     tools:context="${relativePackage}.${activityClass}" >
 
+    	<TextView 
+	    android:id="@+id/mAbout"
+	    style="@style/layout_m_w"
+	    android:visibility="gone"
+	    android:text="@string/about">
+	</TextView>
+	
     <ListView
         android:id="@+id/mList"
         style="@style/layout_m_m"
@@ -21,13 +28,13 @@
             android:id="@+id/restore"
             style="@style/layout_m_w"
             android:layout_weight="1"
-            android:text="恢复" />
+            android:text="Load" />
 
         <Button
             android:id="@+id/backup"
             style="@style/layout_m_w"
             android:layout_weight="1"
-            android:text="备份" />
+            android:text="Save" />
     </LinearLayout>
 
 </LinearLayout>

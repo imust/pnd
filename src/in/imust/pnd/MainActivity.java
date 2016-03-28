@@ -12,7 +12,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -20,7 +20,10 @@ import android.app.Activity;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
@@ -36,9 +39,14 @@ public class MainActivity extends Activity {
 	private int mType = TYPE_HT;
 	private String mPackage = PACKAGE_HT;
 	private int mMaxIndex = 0;
+	private int mSelectIndex = -1;
 	
 	@ViewById
 	ListView mList;
+	@ViewById(R.id.restore)
+	Button mRestore;
+	@ViewById
+	TextView mAbout;
 	
 	CustomerAdapter<SimpleBackup, SimpleBackupView_> mAdapter;
 	
@@ -62,8 +70,10 @@ public class MainActivity extends Activity {
 	
 	@UiThread
 	void refresh() {
-		setTitle(mType == TYPE_HT ? "PND.HT" : "PND.JP");
+		setTitle(mType == TYPE_HT ? "PND.HT港服" : "PND.JP日服");
 		refreshListData();
+		mSelectIndex = -1;
+        mRestore.setText("Load");
 	}
 	
 	@Background
@@ -97,6 +107,11 @@ public class MainActivity extends Activity {
 	void refreshListView(ArrayList<SimpleBackup> list) {
 		mAdapter.setList(list);
 		mAdapter.notifyDataSetChanged();
+        if (mMaxIndex == 0) {
+            mAbout.setVisibility(View.VISIBLE);
+        } else {
+            mAbout.setVisibility(View.GONE);
+        }
 	}
 	
 	@Override
@@ -122,6 +137,12 @@ public class MainActivity extends Activity {
 	}
 	
 	
+	@ItemClick(R.id.mList)
+	void listItemClick(int position) {
+	    mSelectIndex = position +1;
+	    mRestore.setText(String.format("Load(%1$s)", mSelectIndex));
+	}
+	
 	@Click
 	void backup() {
 		File nextDir = new File(mBackupDir, mMaxIndex + 1 + "");
@@ -134,8 +155,8 @@ public class MainActivity extends Activity {
 	
 	@Click
 	void restore() {
-		File lastDir = new File(mBackupDir, mMaxIndex + "");
-		if (lastDir.exists()) {
+		File restoreDir = new File(mBackupDir, mSelectIndex == 0 ? mMaxIndex + "" : mSelectIndex + "");
+		if (restoreDir.exists()) {
 			// 先备份一下避免按错
 			File temp = new File(mBackupDir, "temp");
 			if (!temp.exists()) {
@@ -147,7 +168,7 @@ public class MainActivity extends Activity {
 			
 			// 然后再真的还原
 			command = String.format("cp -f %1$s/*.bin /data/data/%2$s/files/"
-					, lastDir.getAbsolutePath(), mPackage);
+					, restoreDir.getAbsolutePath(), mPackage);
 			ShellUtils.execCommand(command, true);
 			refresh();
 		}

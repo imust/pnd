@@ -4,57 +4,28 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.+'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.+'
     }
 }
-
-repositories {
-	mavenCentral()
-	mavenLocal()
-}
-
-//apply plugin: 'com.android.application'
-//apply plugin: 'com.neenbedankt.android-apt'
-
 apply plugin: 'android'
-apply plugin: 'android-apt'
 
 dependencies {
-    //compile fileTree(dir: 'libs', include: '*.jar')
-    apt "org.androidannotations:androidannotations:3.0.1"
-  	compile "org.androidannotations:androidannotations-api:3.0.1"
-}
-
-apt {
-	arguments {
-	    androidManifestFile variant.processResources.manifestFile
-	    resourcePackageName "in.imust.pnd"
-	    //resourcePackageName android.defaultConfig.packageName
-	    
-	    //logLevel TRACE
-	    //logConsoleAppender true
- 	}
+    compile fileTree(dir: 'libs', include: '*.jar')
 }
 
 android {
-    compileSdkVersion 14
+    compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
+            java.srcDirs = ['code_gen','src']
+            resources.srcDirs = ['code_gen','src']
+            aidl.srcDirs = ['code_gen','src']
+            renderscript.srcDirs = ['code_gen','src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
         }
-        
-		lintOptions {
-	        abortOnError false
-	        ignoreWarnings true 
-	    }
 
         // Move the tests to tests/java, tests/res, etc...
         instrumentTest.setRoot('tests')
