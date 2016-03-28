@@ -155,7 +155,7 @@ public class MainActivity extends Activity {
 	
 	@Click
 	void restore() {
-		File restoreDir = new File(mBackupDir, mSelectIndex == 0 ? mMaxIndex + "" : mSelectIndex + "");
+		File restoreDir = new File(mBackupDir, mSelectIndex == -1 ? mMaxIndex + "" : mSelectIndex + "");
 		if (restoreDir.exists()) {
 			// 先备份一下避免按错
 			File temp = new File(mBackupDir, "temp");
