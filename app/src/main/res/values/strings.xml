@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"><![CDATA[P&D SL]]></string>
+    <string name="about"><![CDATA[
+              说明:\n
+	    1. 此工具只能工作在ROOT+BUSYBOX状态下, 故默认状态为港服, 日服也能用, 需手动切换ROOT状态(日服比较麻烦, 你们懂的, 我是没那个耐心)\n
+	    1.1 如果你一定要在日服使用, 并且已经能够成功S&L, 请注意当前状态是日服还是港服(因为每次进来默认都是港服)\n
+	    \n
+	    2. 此工具起初是用于个人及朋友使用, 故没有做太多提示, 一切以方便为目的, 请小心误操作\n
+	    2.1 比如点那个垃圾桶就会清空所有存档, 并不会提示你\"亲, 是否确定要清空存档?\"\n
+	    2.2 再比如你在UNROOT状态下点了Save, 也不会提示你\"存档失败\"\n
+	    \n
+	    3. 存档保存位置/{ExternalStorageDirectory}/PadBack(有必要的时候可以自己去这里找)\n
+        \n
+        4. 每次读档之前会自动把当前存档保存在"0"文件夹, 防止误操作\n
+        \n
+        4. 有问题可以联系delan.zhang@gmail.com, 标题请注明"p&d sl"\n
+        ]]></string>
+</resources>
