@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
         nextDir.mkdir();
 
         String[] command = new String[]{
-                String.format("busybox cp /data/data/%1$s/files/*.bin %2$s/"
+                String.format("cp /data/data/%1$s/files/*.bin %2$s/"
                         , mPackage, nextDir.getAbsolutePath())
         };
         ShellUtils.execCommand(command, true);
@@ -165,12 +165,12 @@ public class MainActivity extends Activity {
 			if (!temp.exists()) {
 				temp.mkdir();
 			}
-			String command = String.format("busybox cp /data/data/%1$s/files/*.bin %2$s/"
+			String command = String.format("cp /data/data/%1$s/files/*.bin %2$s/"
 					, mPackage, temp.getAbsolutePath());
 			ShellUtils.execCommand(command, true);
 			
 			// 然后再真的还原
-			command = String.format("busybox cp -f %1$s/*.bin /data/data/%2$s/files/"
+			command = String.format("cp -f %1$s/*.bin /data/data/%2$s/files/"
 					, restoreDir.getAbsolutePath(), mPackage);
 			ShellUtils.execCommand(command, true);
 			refresh();
