@@ -3,9 +3,34 @@
 
     <item
         android:id="@+id/exchange"
-        android:icon="@android:drawable/ic_menu_rotate"
         android:showAsAction="never"
         android:title="切换日服港服"/>
+
+    <item
+        android:id="@+id/ac1"
+        android:showAsAction="never"
+        android:title="切换帐号1"/>
+
+    <item
+        android:id="@+id/ac2"
+        android:showAsAction="never"
+        android:title="切换帐号2"/>
+
+    <item
+        android:id="@+id/mv1"
+        android:showAsAction="never"
+        android:title="移动至帐号1"/>
+
+    <item
+        android:id="@+id/mv2"
+        android:showAsAction="never"
+        android:title="移动至帐号2"/>
+
+    <item
+        android:id="@+id/deleteAcc"
+        android:showAsAction="never"
+        android:title="清空帐号"/>
+
     <item
         android:id="@+id/delete"
         android:icon="@android:drawable/ic_menu_delete"
